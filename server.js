@@ -1,4 +1,3 @@
-// server.js - Main entry point
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -8,20 +7,30 @@ const transactionRoutes = require('./routes/transactionRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// ============================================
+// ✅ FIXED CORS CONFIGURATION
+// ============================================
 app.use(cors({
   origin: [
-    'https://pay-record-taupe.vercel.app',
-    'https://pay-record-hcfko0115-perfect-s-projects1.vercel.app'
+    'http://localhost:5173',
+    'https://pay-record-hcfko115-perfect-s-projects.vercel.app', // Your Vercel URL
+    'https://pay-record.vercel.app' // Generic Vercel URL
   ],
-  credentials: true // only needed if auth uses cookies
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
+// For testing, you can also use this (allows all origins):
+// app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], allowedHeaders: ['Content-Type', 'Authorization'] }));
+
+// ============================================
+// Middleware
+// ============================================
 app.use(express.json());
 
-// Public routes (Login / Register)
+// Routes
 app.use('/api/auth', authRoutes);
-
-// Protected routes (All transaction endpoints)
 app.use('/api/transactions', transactionRoutes);
 
 // Health check
