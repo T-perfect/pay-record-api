@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://pay-record-hcfko115-perfect-s-projects.vercel.app', // Your Vercel URL
-    'https://pay-record.vercel.app' // Generic Vercel URL
+    'https://pay-record-taupe.vercel.app',    // 👈 ADD THIS!
+    'https://pay-record.vercel.app'           // Keep this too
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
