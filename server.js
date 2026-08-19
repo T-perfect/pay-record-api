@@ -11,11 +11,10 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors({
   origin: [
-    'http://localhost:5173',
-    'https://payrecord.vercel.app',
-    'https://pay-record-taupe.vercel.app/' 
+    'https://pay-record-taupe.vercel.app',
+    'https://pay-record-hcfko0115-perfect-s-projects1.vercel.app'
   ],
-  credentials: true
+  credentials: true // only needed if auth uses cookies
 }));
 app.use(express.json());
 
